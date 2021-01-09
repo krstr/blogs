@@ -1,0 +1,22 @@
+{% extends "blogs/base.html" %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+  <h3>Blog Posts</h3>
+{% endblock page_header %}
+
+{% block content %}
+  <ul>
+    {% for post in posts %}
+      <li>
+        <p><a href="{% url 'blogs:edit_post' post.id %}">{{ post }}</a></p>
+        <p> {{post.text}} </p>
+      </li>
+    {% empty %}
+      <li>No posts have been added yet.</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'blogs:new_post' %}">Add a new post</a>
+
+{% endblock content %}
